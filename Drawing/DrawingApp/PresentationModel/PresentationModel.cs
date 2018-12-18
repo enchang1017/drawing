@@ -1,31 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
+using DrawingModel.Interface;
 using DrawingModel.Model;
+using System.ComponentModel;
 
-namespace DrawingForm
+namespace DrawingApp.PresentationModel
 {
     public class PresentationModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private Model _model = new Model();
+        Model _model;
+        IGraphics _graphics;
         private bool _isLineButtonPress = true;
         private bool _isDiamondButtonPress = true;
-        public PresentationModel(Model model)
+
+        public PresentationModel(Model model, Canvas canvas)
         {
-            _model = model;
+            this._model = model;
+            _graphics = new WindowsStoreGraphicsAdaptor(canvas);
         }
 
         //畫圖
-        public void Draw(System.Drawing.Graphics graphics)
+        public void Draw()
         {
-            // graphics物件是Paint事件帶進來的，只能在當次Paint使用
-            // 而Adaptor又直接使用graphics，這樣DoubleBuffer才能正確運作
-            // 因此，Adaptor不能重複使用，每次都要重新new
-            _model.Draw(new WindowsFormsGraphicsAdaptor(graphics));
+            // 重複使用igraphics物件
+            _model.Draw(_graphics);
         }
 
         //設定狀態，目前是哪一種圖形

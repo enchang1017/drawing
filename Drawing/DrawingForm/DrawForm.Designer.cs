@@ -29,46 +29,27 @@
         private void InitializeComponent()
         {
             this._drawingPanel = new System.Windows.Forms.Panel();
-            this._diamondButton = new System.Windows.Forms.Button();
-            this._LineButton = new System.Windows.Forms.Button();
             this._clearButton = new System.Windows.Forms.Button();
+            this._lineButton = new System.Windows.Forms.Button();
+            this._diamondButton = new System.Windows.Forms.Button();
             this._drawingPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // _drawingPanel
             // 
-            this._drawingPanel.BackColor = System.Drawing.SystemColors.Info;
+            this._drawingPanel.BackColor = System.Drawing.Color.LightYellow;
             this._drawingPanel.Controls.Add(this._clearButton);
-            this._drawingPanel.Controls.Add(this._LineButton);
+            this._drawingPanel.Controls.Add(this._lineButton);
             this._drawingPanel.Controls.Add(this._diamondButton);
             this._drawingPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._drawingPanel.BackColor = System.Drawing.Color.LightYellow;
             this._drawingPanel.Location = new System.Drawing.Point(0, 0);
             this._drawingPanel.Name = "_drawingPanel";
             this._drawingPanel.Size = new System.Drawing.Size(1121, 601);
             this._drawingPanel.TabIndex = 0;
-            this._drawingPanel.MouseDown += HandleCanvasPressed;
-            this._drawingPanel.MouseUp += HandleCanvasReleased;
-            this._drawingPanel.MouseMove += HandleCanvasMoved;
-            this._drawingPanel.Paint += HandleCanvasPaint;
-            // 
-            // _diamondButton
-            // 
-            this._diamondButton.Location = new System.Drawing.Point(38, 12);
-            this._diamondButton.Name = "_diamondButton";
-            this._diamondButton.Size = new System.Drawing.Size(226, 45);
-            this._diamondButton.TabIndex = 0;
-            this._diamondButton.Text = "Diamond";
-            this._diamondButton.UseVisualStyleBackColor = true;
-            // 
-            // _LineButton
-            // 
-            this._LineButton.Location = new System.Drawing.Point(448, 12);
-            this._LineButton.Name = "_LineButton";
-            this._LineButton.Size = new System.Drawing.Size(226, 45);
-            this._LineButton.TabIndex = 1;
-            this._LineButton.Text = "Line";
-            this._LineButton.UseVisualStyleBackColor = true;
+            this._drawingPanel.MouseDown += PressHandleCanvas;
+            this._drawingPanel.MouseUp += ReleaseHandleCanvas;
+            this._drawingPanel.MouseMove += MoveHandleCanvas;
+            this._drawingPanel.Paint += PaintHandleCanvas;
             // 
             // _clearButton
             // 
@@ -78,6 +59,26 @@
             this._clearButton.TabIndex = 2;
             this._clearButton.Text = "Clear";
             this._clearButton.UseVisualStyleBackColor = true;
+            // 
+            // _lineButton
+            // 
+            this._lineButton.Location = new System.Drawing.Point(448, 12);
+            this._lineButton.Name = "_lineButton";
+            this._lineButton.Size = new System.Drawing.Size(226, 45);
+            this._lineButton.TabIndex = 1;
+            this._lineButton.Text = "Line";
+            this._lineButton.UseVisualStyleBackColor = true;
+            this._lineButton.Click += new System.EventHandler(this.ClickLineButton);
+            // 
+            // _diamondButton
+            // 
+            this._diamondButton.Location = new System.Drawing.Point(38, 12);
+            this._diamondButton.Name = "_diamondButton";
+            this._diamondButton.Size = new System.Drawing.Size(226, 45);
+            this._diamondButton.TabIndex = 0;
+            this._diamondButton.Text = "Diamond";
+            this._diamondButton.UseVisualStyleBackColor = true;
+            this._diamondButton.Click += new System.EventHandler(this.ClickDiamondButton);
             // 
             // DrawForm
             // 
@@ -96,7 +97,7 @@
 
         private System.Windows.Forms.Panel _drawingPanel;
         private System.Windows.Forms.Button _clearButton;
-        private System.Windows.Forms.Button _LineButton;
+        private System.Windows.Forms.Button _lineButton;
         private System.Windows.Forms.Button _diamondButton;
     }
 }

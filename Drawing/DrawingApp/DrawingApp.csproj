@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{081C20D5-AA58-424D-B00B-81583544B0E9}</ProjectGuid>
+    <ProjectGuid>{7132AB88-6734-4BAC-AB39-C5F0D33921C1}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DrawingApp</RootNamespace>
@@ -92,12 +92,33 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\DrawingModel\Interface\IGraphics.cs">
+      <Link>Interface\IGraphics.cs</Link>
+    </Compile>
+    <Compile Include="..\DrawingModel\Interface\Shape.cs">
+      <Link>Interface\Shape.cs</Link>
+    </Compile>
+    <Compile Include="..\DrawingModel\Model\Constant.cs">
+      <Link>Model\Constant.cs</Link>
+    </Compile>
+    <Compile Include="..\DrawingModel\Model\Diamond.cs">
+      <Link>Model\Diamond.cs</Link>
+    </Compile>
+    <Compile Include="..\DrawingModel\Model\Line.cs">
+      <Link>Model\Line.cs</Link>
+    </Compile>
+    <Compile Include="..\DrawingModel\Model\Model.cs">
+      <Link>Model\Model.cs</Link>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Points.cs" />
+    <Compile Include="PresentationModel\PresentationModel.cs" />
+    <Compile Include="PresentationModel\WindowsStoreGraphicsAdaptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +152,7 @@
       <Version>6.1.7</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

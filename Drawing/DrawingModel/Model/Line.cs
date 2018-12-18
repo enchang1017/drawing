@@ -3,34 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DrawingModel.Interface;
 
 namespace DrawingModel.Model
 {
-    public class Points
+    public class Line : Shape
     {
-        public double FirstPoint_X
+        public double x1
+        {
+            get;
+            set;
+        }
+        public double y1
+        {
+            get;
+            set;
+        }
+        public double x2
+        {
+            get;
+            set;
+        }
+        public double y2
         {
             get;
             set;
         }
 
-        public double FirstPoint_Y
+        //畫線
+        public void Draw(IGraphics graphics)
         {
-            get;
-            set;
+            graphics.DrawLine(x1, y1, x2, y2);
         }
-
-        public double LastPoint_X
-        {
-            get;
-            set;
-        }
-
-        public double LastPoint_Y
-        {
-            get;
-            set;
-        }
-
     }
 }

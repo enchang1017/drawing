@@ -8,7 +8,11 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Background="{ThemeResource AppBarItemForegroundThemeBrush}">
+        <Button x:Name="_diamond" Content="Diamond" HorizontalAlignment="Left" Height="71" Margin="56,60,0,0" VerticalAlignment="Top" Width="259" Foreground="White" FocusVisualPrimaryBrush="Black" BorderBrush="White" IsEnabled="{Binding IsDiamondButtonPress}" />
+        <Button x:Name="_line" Content="Line" HorizontalAlignment="Center" Height="71" Margin="0,60,0,0" VerticalAlignment="Top" Width="259" BorderBrush="White" Foreground="White" IsEnabled="{Binding IsLineButtonPress}" />
+        <Button x:Name="_clear" Content="Clear" HorizontalAlignment="Left" Height="71" Margin="1179,60,0,0" VerticalAlignment="Top" Width="259" Foreground="White" BorderBrush="White"/>
+        <Canvas x:Name="_canvas" HorizontalAlignment="Center" VerticalAlignment="Stretch" Width="1376" Margin="0,159,0,10" FocusVisualPrimaryBrush="{x:Null}" Background="#FFF5FF92"/>
 
     </Grid>
 </Page>

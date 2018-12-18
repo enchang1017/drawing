@@ -8,5 +8,7 @@ namespace DrawingModel.Interface
 {
     interface Shape
     {
+        //畫線
+        void Draw(IGraphics graphics);
     }
 }
