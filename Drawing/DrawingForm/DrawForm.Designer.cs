@@ -46,10 +46,6 @@
             this._drawingPanel.Name = "_drawingPanel";
             this._drawingPanel.Size = new System.Drawing.Size(1121, 601);
             this._drawingPanel.TabIndex = 0;
-            this._drawingPanel.MouseDown += PressHandleCanvas;
-            this._drawingPanel.MouseUp += ReleaseHandleCanvas;
-            this._drawingPanel.MouseMove += MoveHandleCanvas;
-            this._drawingPanel.Paint += PaintHandleCanvas;
             // 
             // _clearButton
             // 
@@ -62,7 +58,7 @@
             // 
             // _lineButton
             // 
-            this._lineButton.Location = new System.Drawing.Point(448, 12);
+            this._lineButton.Location = new System.Drawing.Point(318, 12);
             this._lineButton.Name = "_lineButton";
             this._lineButton.Size = new System.Drawing.Size(226, 45);
             this._lineButton.TabIndex = 1;

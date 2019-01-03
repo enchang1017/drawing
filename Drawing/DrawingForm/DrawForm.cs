@@ -15,17 +15,34 @@ namespace DrawingForm
     {
         private Model _model = new Model();
         private PresentationModel _presentationModel;
+        private ToolStripButton _undo;
+        private ToolStripButton _redo;
 
         public DrawForm(Model model)
         {
             _drawingPanel = new DoubleBufferedPanel();
             InitializeComponent();
+
+            ToolStrip _toolStrip = new ToolStrip();
+            _toolStrip.Parent = this;
+
+            _undo = new ToolStripButton("Undo", null, ClickUndoButton);
+            _undo.Enabled = false;
+            _toolStrip.Items.Add(_undo);
+            _redo = new ToolStripButton("Redo", null, ClickRedoButton);
+            _redo.Enabled = false;
+            _toolStrip.Items.Add(_redo);
+
             _model = model;
             _presentationModel = new PresentationModel(_model);
             _lineButton.DataBindings.Add(Constant.ITEM_ENABLED,_presentationModel,Constant.IS_LINE_BUTTON_PRESS);
             _diamondButton.DataBindings.Add(Constant.ITEM_ENABLED,_presentationModel,Constant.IS_DIAMOND_BUTTON_PRESS);
             _model._modelChanged += ChangeHandleModel;
             _clearButton.Click += ClickHandleClearButton;
+            _drawingPanel.MouseDown += PressHandleCanvas;
+            _drawingPanel.MouseUp += ReleaseHandleCanvas;
+            _drawingPanel.MouseMove += MoveHandleCanvas;
+            _drawingPanel.Paint += PaintHandleCanvas;
         }
 
         //清除按鈕觸發
@@ -72,10 +89,26 @@ namespace DrawingForm
             _model.Status = Constant.DIAMOND;
             _presentationModel.SetStatus(Constant.DIAMOND);
         }
+        
+        //按下Undo
+        private void ClickUndoButton(Object sender, EventArgs e)
+        {
+            _model.Undo();
+            ChangeHandleModel();
+        }
+
+        //按下Redo
+        private void ClickRedoButton(Object sender, EventArgs e)
+        {
+            _model.Redo();
+            ChangeHandleModel();
+        }
 
         //畫面更新
         public void ChangeHandleModel()
         {
+            _redo.Enabled = _model.IsRedoEnabled;
+            _undo.Enabled = _model.IsUndoEnabled;
             Invalidate(true);
         }
     }

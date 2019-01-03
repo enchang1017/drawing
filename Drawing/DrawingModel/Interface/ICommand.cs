@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace DrawingModel.Interface
 {
-    public interface Shape
+    interface ICommand
     {
-        //畫線
-        void Draw(IGraphics graphics);
+        //執行Redo
+        void Execute();
+        //執行Undo
+        void UnExecute();
     }
 }

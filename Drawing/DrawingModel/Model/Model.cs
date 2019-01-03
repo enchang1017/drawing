@@ -7,10 +7,11 @@ using DrawingModel.Interface;
 
 namespace DrawingModel.Model
 {
-    public class Model
+    public partial class Model
     {
         public event ModelChangedEventHandler _modelChanged;
         public delegate void ModelChangedEventHandler();
+        private CommandManager _commandManager = new CommandManager();
         private bool _isMousePress = false;
         private List<Shape> _shapes = new List<Shape>();
         private Line _hintLine;
@@ -58,6 +59,7 @@ namespace DrawingModel.Model
         {
             _isMousePress = false;
             _shapes.Clear();
+            _commandManager.Clear();
             NotifyModelChanged();
         }
 
@@ -97,7 +99,7 @@ namespace DrawingModel.Model
             line.y1 = _point.FirstPoint_Y;
             line.x2 = x2;
             line.y2 = y2;
-            _shapes.Add(line);
+            _commandManager.Execute(new DrawCommand(this,line));
         }
 
         //new Diamond
@@ -108,7 +110,7 @@ namespace DrawingModel.Model
             diamond.y1 = _point.FirstPoint_Y;
             diamond.x2 = x2;
             diamond.y2 = y2;
-            _shapes.Add(diamond);
+            _commandManager.Execute(new DrawCommand(this, diamond));
         }
 
         //設定Hint 第一個點
@@ -141,24 +143,16 @@ namespace DrawingModel.Model
             }
         }
 
-        //通知畫面更改
-        private void NotifyModelChanged()
+        //將Shape存到List裡面
+        public void DrawShape(Shape shape)
         {
-            if (_modelChanged != null)
-                _modelChanged();
+            _shapes.Add(shape);
         }
 
-        //狀態(什麼圖形)
-        public string Status
+        //將Shape從List刪除
+        public void DeleteShape()
         {
-            get
-            {
-                return _status;
-            }
-            set
-            {
-                _status = value;
-            }
+            _shapes.RemoveAt(_shapes.Count - 1);
         }
     }
 }
