@@ -14,6 +14,7 @@ namespace DrawingForm
         private Model _model = new Model();
         private bool _isLineButtonPress = true;
         private bool _isDiamondButtonPress = true;
+        private bool _isEllipsesButtonPress = true;
         public PresentationModel(Model model)
         {
             _model = model;
@@ -34,27 +35,15 @@ namespace DrawingForm
             SetButtonEnabled(status);
             Notify(Constant.IS_DIAMOND_BUTTON_PRESS);
             Notify(Constant.IS_LINE_BUTTON_PRESS);
+            Notify(Constant.IS_ELLIPSES_BUTTON_PRESS);
         }
 
         //設定按鈕狀態
         private void SetButtonEnabled(string status)
         {
-            if (status == Constant.LINE)
-            {
-                _isDiamondButtonPress = true;
-                _isLineButtonPress = false;
-            }
-            else if (status == Constant.DIAMOND)
-            {
-                _isDiamondButtonPress = false;
-                _isLineButtonPress = true;
-            }
-            else
-            {
-                _isDiamondButtonPress = true;
-                _isLineButtonPress = true;
-                _model.Status = Constant.CLEAR;
-            }
+            _isDiamondButtonPress = status != Constant.DIAMOND;
+            _isLineButtonPress = status != Constant.LINE;
+            _isEllipsesButtonPress = status != Constant.ELLIPSES;
         }
 
         //通知畫面更改
@@ -62,6 +51,18 @@ namespace DrawingForm
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public bool IsEllipsesButtonPress
+        {
+            get
+            {
+                return _isEllipsesButtonPress;
+            }
+            set
+            {
+                _isEllipsesButtonPress = value;
+            }
         }
 
         public bool IsLineButtonPress

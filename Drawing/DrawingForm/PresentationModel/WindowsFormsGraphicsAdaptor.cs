@@ -39,5 +39,14 @@ namespace DrawingForm
             _graphics.FillPolygon(Brushes.Yellow, points);
             _graphics.DrawPolygon(Pens.Black, points);
         }
+
+        //畫橢圓
+        public void DrawEllipses(double x1, double y1, double x2, double y2)
+        {
+            Pen blackPen = new Pen(Color.Black, 1);
+            Rectangle rect = new Rectangle((int)x1, (int)y1, (int)(x2 - x1), (int)(y2 - y1));
+            _graphics.FillEllipse(Brushes.Salmon, rect);
+            _graphics.DrawEllipse(blackPen, rect);
+        }
     }
 }

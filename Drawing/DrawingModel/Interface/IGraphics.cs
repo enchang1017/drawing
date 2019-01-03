@@ -16,5 +16,8 @@ namespace DrawingModel.Interface
 
         //畫方塊
         void DrawDiamond(double x1, double y1, double x2, double y2);
+
+        //畫橢圓
+        void DrawEllipses(double x1, double y1, double x2, double y2);
     }
 }

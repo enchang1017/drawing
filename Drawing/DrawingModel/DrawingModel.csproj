@@ -48,6 +48,7 @@
     <Compile Include="Model\Constant.cs" />
     <Compile Include="Model\Diamond.cs" />
     <Compile Include="Model\DrawCommand.cs" />
+    <Compile Include="Model\Ellipses.cs" />
     <Compile Include="Model\Line.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\ModelProperty.cs" />
