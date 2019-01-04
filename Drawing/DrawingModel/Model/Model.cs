@@ -86,53 +86,12 @@ namespace DrawingModel.Model
         //滑鼠按鍵釋放後決定最後一個點
         private void SetFinalPoint(double x2, double y2)
         {
-            if (this.Status == Constant.LINE)
-            {
-                CreateLine(x2, y2);
-            }
-            else if (this.Status == Constant.DIAMOND)
-            {
-                CreateDiamond(x2, y2);
-            }
-            else if (this.Status == Constant.ELLIPSE)
-            {
-                CreateEllipses(x2,y2);
-            }
-
-            _shapeFactory.CreateShape(this.Status);
-        }
-
-        //new Line
-        private void CreateLine(double x2, double y2)
-        {
-            Line line = new Line();
-            line.x1 = _point.FirstPoint_X;
-            line.y1 = _point.FirstPoint_Y;
-            line.x2 = x2;
-            line.y2 = y2;
-            _commandManager.Execute(new DrawCommand(this,line));
-        }
-
-        //new Diamond
-        private void CreateDiamond(double x2, double y2)
-        {
-            Diamond diamond = new Diamond();
-            diamond.x1 = _point.FirstPoint_X;
-            diamond.y1 = _point.FirstPoint_Y;
-            diamond.x2 = x2;
-            diamond.y2 = y2;
-            _commandManager.Execute(new DrawCommand(this, diamond));
-        }
-
-        //new Ellipses
-        private void CreateEllipses(double x2, double y2)
-        {
-            Ellipse ellipses = new Ellipse();
-            ellipses.x1 = _point.FirstPoint_X;
-            ellipses.y1 = _point.FirstPoint_Y;
-            ellipses.x2 = x2;
-            ellipses.y2 = y2;
-            _commandManager.Execute(new DrawCommand(this, ellipses));
+            Shape shape = _shapeFactory.CreateShape(this.Status);
+            shape.x1 = _point.FirstPoint_X;
+            shape.y1 = _point.FirstPoint_Y;
+            shape.x2 = x2;
+            shape.y2 = y2;
+            _commandManager.Execute(new DrawCommand(this, shape));
         }
 
         //設定Hint 第一個點
