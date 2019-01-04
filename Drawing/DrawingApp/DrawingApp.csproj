@@ -92,11 +92,17 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\DrawingModel\Interface\ICommand.cs">
+      <Link>Interface\ICommand.cs</Link>
+    </Compile>
     <Compile Include="..\DrawingModel\Interface\IGraphics.cs">
       <Link>Interface\IGraphics.cs</Link>
     </Compile>
     <Compile Include="..\DrawingModel\Interface\Shape.cs">
       <Link>Interface\Shape.cs</Link>
+    </Compile>
+    <Compile Include="..\DrawingModel\Model\CommandManager.cs">
+      <Link>Model\CommandManager.cs</Link>
     </Compile>
     <Compile Include="..\DrawingModel\Model\Constant.cs">
       <Link>Model\Constant.cs</Link>
@@ -104,11 +110,20 @@
     <Compile Include="..\DrawingModel\Model\Diamond.cs">
       <Link>Model\Diamond.cs</Link>
     </Compile>
+    <Compile Include="..\DrawingModel\Model\DrawCommand.cs">
+      <Link>Model\DrawCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\DrawingModel\Model\Ellipse.cs">
+      <Link>Model\Ellipse.cs</Link>
+    </Compile>
     <Compile Include="..\DrawingModel\Model\Line.cs">
       <Link>Model\Line.cs</Link>
     </Compile>
     <Compile Include="..\DrawingModel\Model\Model.cs">
       <Link>Model\Model.cs</Link>
+    </Compile>
+    <Compile Include="..\DrawingModel\Model\ModelProperty.cs">
+      <Link>Model\ModelProperty.cs</Link>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

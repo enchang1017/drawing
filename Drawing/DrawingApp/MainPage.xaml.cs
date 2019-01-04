@@ -39,6 +39,9 @@ namespace DrawingApp
             _model._modelChanged += ChangeHandleModel;
             _line.Click += ClickLineButton;
             _diamond.Click += ClickDiamondButton;
+            _ellipse.Click += ClickEllipseButton;
+            _undo.Click += ClickUndoButton;
+            _redo.Click += ClickRedoButton;
             this.DataContext = _presentationModel;
         }
         
@@ -46,6 +49,7 @@ namespace DrawingApp
         private void ClickHandleClearButton(object sender, RoutedEventArgs e)
         {
             _presentationModel.SetStatus(Constant.CLEAR);
+            _model.Status = Constant.CLEAR;
             _model.Clear();
         }
 
@@ -81,9 +85,32 @@ namespace DrawingApp
             _presentationModel.SetStatus(Constant.DIAMOND);
         }
 
+        //按下Ellipse按鈕
+        private void ClickEllipseButton(object sender, RoutedEventArgs e)
+        {
+            _model.Status = Constant.ELLIPSE;
+            _presentationModel.SetStatus(Constant.ELLIPSE);
+        }
+
+        //按下Undo
+        private void ClickUndoButton(object sender, RoutedEventArgs e)
+        {
+            _model.Undo();
+            ChangeHandleModel();
+        }
+
+        //按下Redo
+        private void ClickRedoButton(object sender, RoutedEventArgs e)
+        {
+            _model.Redo();
+            ChangeHandleModel();
+        }
+
         //畫面更新
         public void ChangeHandleModel()
         {
+            _redo.IsEnabled = _model.IsRedoEnabled;
+            _undo.IsEnabled = _model.IsUndoEnabled;
             _presentationModel.Draw();
         }
     }

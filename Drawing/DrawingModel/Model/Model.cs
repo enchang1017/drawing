@@ -16,16 +16,17 @@ namespace DrawingModel.Model
         private List<Shape> _shapes = new List<Shape>();
         private Line _hintLine;
         private Diamond _hintDiamond;
-        private Ellipses _hintEllipses;
+        private Ellipse _hintEllipses;
         private Points _point = new Points();
         private string _status;
+        private ShapeFactory _shapeFactory = new ShapeFactory();
 
         //滑鼠點下
         public void PressPointer(double x1, double y1)
         {
             _hintLine = new Line();
             _hintDiamond = new Diamond();
-            _hintEllipses = new Ellipses();
+            _hintEllipses = new Ellipse();
             if (x1 > 0 && y1 > 0)
             {
                 _point.FirstPoint_X = x1;
@@ -77,7 +78,7 @@ namespace DrawingModel.Model
                     _hintLine.Draw(graphics);
                 else if (this.Status == Constant.DIAMOND)
                     _hintDiamond.Draw(graphics);
-                else if (this.Status == Constant.ELLIPSES)
+                else if (this.Status == Constant.ELLIPSE)
                     _hintEllipses.Draw(graphics);
             }
         }
@@ -93,10 +94,12 @@ namespace DrawingModel.Model
             {
                 CreateDiamond(x2, y2);
             }
-            else if (this.Status == Constant.ELLIPSES)
+            else if (this.Status == Constant.ELLIPSE)
             {
                 CreateEllipses(x2,y2);
             }
+
+            _shapeFactory.CreateShape(this.Status);
         }
 
         //new Line
@@ -124,7 +127,7 @@ namespace DrawingModel.Model
         //new Ellipses
         private void CreateEllipses(double x2, double y2)
         {
-            Ellipses ellipses = new Ellipses();
+            Ellipse ellipses = new Ellipse();
             ellipses.x1 = _point.FirstPoint_X;
             ellipses.y1 = _point.FirstPoint_Y;
             ellipses.x2 = x2;
@@ -145,7 +148,7 @@ namespace DrawingModel.Model
                 _hintDiamond.x1 = x1;
                 _hintDiamond.y1 = y1;
             }
-            else if (this.Status == Constant.ELLIPSES)
+            else if (this.Status == Constant.ELLIPSE)
             {
                 _hintEllipses.x1 = x1;
                 _hintEllipses.y1 = y1;
@@ -165,7 +168,7 @@ namespace DrawingModel.Model
                 _hintDiamond.x2 = x2;
                 _hintDiamond.y2 = y2;
             }
-            else if (this.Status == Constant.ELLIPSES)
+            else if (this.Status == Constant.ELLIPSE)
             {
                 _hintEllipses.x2 = x2;
                 _hintEllipses.y2 = y2;

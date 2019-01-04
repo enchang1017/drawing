@@ -37,7 +37,7 @@ namespace DrawingForm
             _presentationModel = new PresentationModel(_model);
             _lineButton.DataBindings.Add(Constant.ITEM_ENABLED,_presentationModel,Constant.IS_LINE_BUTTON_PRESS);
             _diamondButton.DataBindings.Add(Constant.ITEM_ENABLED,_presentationModel,Constant.IS_DIAMOND_BUTTON_PRESS);
-            _ellipsesbutton.DataBindings.Add(Constant.ITEM_ENABLED,_presentationModel,Constant.IS_ELLIPSES_BUTTON_PRESS);
+            _ellipsebutton.DataBindings.Add(Constant.ITEM_ENABLED,_presentationModel,Constant.IS_ELLIPSES_BUTTON_PRESS);
             _model._modelChanged += ChangeHandleModel;
             _clearButton.Click += ClickHandleClearButton;
             _drawingPanel.MouseDown += PressHandleCanvas;
@@ -117,8 +117,8 @@ namespace DrawingForm
         //按下橢圓按鈕
         private void ClickEllipsesbutton(object sender, EventArgs e)
         {
-            _model.Status = Constant.ELLIPSES;
-            _presentationModel.SetStatus(Constant.ELLIPSES);
+            _model.Status = Constant.ELLIPSE;
+            _presentationModel.SetStatus(Constant.ELLIPSE);
         }
     }
 }

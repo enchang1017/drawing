@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this._drawingPanel = new System.Windows.Forms.Panel();
+            this._ellipsebutton = new System.Windows.Forms.Button();
             this._clearButton = new System.Windows.Forms.Button();
             this._lineButton = new System.Windows.Forms.Button();
             this._diamondButton = new System.Windows.Forms.Button();
-            this._ellipsesbutton = new System.Windows.Forms.Button();
             this._drawingPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // _drawingPanel
             // 
             this._drawingPanel.BackColor = System.Drawing.Color.LightYellow;
-            this._drawingPanel.Controls.Add(this._ellipsesbutton);
+            this._drawingPanel.Controls.Add(this._ellipsebutton);
             this._drawingPanel.Controls.Add(this._clearButton);
             this._drawingPanel.Controls.Add(this._lineButton);
             this._drawingPanel.Controls.Add(this._diamondButton);
@@ -48,6 +48,16 @@
             this._drawingPanel.Name = "_drawingPanel";
             this._drawingPanel.Size = new System.Drawing.Size(1121, 601);
             this._drawingPanel.TabIndex = 0;
+            // 
+            // _ellipsebutton
+            // 
+            this._ellipsebutton.Location = new System.Drawing.Point(583, 12);
+            this._ellipsebutton.Name = "_ellipsebutton";
+            this._ellipsebutton.Size = new System.Drawing.Size(226, 45);
+            this._ellipsebutton.TabIndex = 3;
+            this._ellipsebutton.Text = "Ellipse";
+            this._ellipsebutton.UseVisualStyleBackColor = true;
+            this._ellipsebutton.Click += new System.EventHandler(this.ClickEllipsesbutton);
             // 
             // _clearButton
             // 
@@ -78,16 +88,6 @@
             this._diamondButton.UseVisualStyleBackColor = true;
             this._diamondButton.Click += new System.EventHandler(this.ClickDiamondButton);
             // 
-            // _ellipsesbutton
-            // 
-            this._ellipsesbutton.Location = new System.Drawing.Point(583, 12);
-            this._ellipsesbutton.Name = "_ellipsesbutton";
-            this._ellipsesbutton.Size = new System.Drawing.Size(226, 45);
-            this._ellipsesbutton.TabIndex = 3;
-            this._ellipsesbutton.Text = "Ellipses";
-            this._ellipsesbutton.UseVisualStyleBackColor = true;
-            this._ellipsesbutton.Click += new System.EventHandler(this.ClickEllipsesbutton);
-            // 
             // DrawForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -107,7 +107,7 @@
         private System.Windows.Forms.Button _clearButton;
         private System.Windows.Forms.Button _lineButton;
         private System.Windows.Forms.Button _diamondButton;
-        private System.Windows.Forms.Button _ellipsesbutton;
+        private System.Windows.Forms.Button _ellipsebutton;
     }
 }
 

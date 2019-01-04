@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DrawingModel.Model
 {
-    public class Ellipses : Shape
+    public class Ellipse : Shape
     {
         public double x1
         {

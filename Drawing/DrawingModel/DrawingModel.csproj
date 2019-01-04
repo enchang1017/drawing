@@ -48,11 +48,12 @@
     <Compile Include="Model\Constant.cs" />
     <Compile Include="Model\Diamond.cs" />
     <Compile Include="Model\DrawCommand.cs" />
-    <Compile Include="Model\Ellipses.cs" />
+    <Compile Include="Model\Ellipse.cs" />
     <Compile Include="Model\Line.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\ModelProperty.cs" />
     <Compile Include="Model\Points.cs" />
+    <Compile Include="Model\ShapeFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

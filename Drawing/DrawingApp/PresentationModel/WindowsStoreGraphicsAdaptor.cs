@@ -5,6 +5,7 @@ using Windows.UI.Xaml.Media;
 using DrawingModel.Interface;
 using DrawingModel.Model;
 using Windows.Foundation;
+using System;
 
 namespace DrawingApp.PresentationModel
 {
@@ -50,6 +51,24 @@ namespace DrawingApp.PresentationModel
             diamond.Fill = new SolidColorBrush(Colors.Yellow);
             diamond.Stroke = new SolidColorBrush(Colors.Black);
             _canvas.Children.Add(diamond);
+        }
+
+        //畫橢圓
+        public void DrawEllipses(double x1, double y1, double x2, double y2)
+        {
+            Windows.UI.Xaml.Shapes.Ellipse ellipse = new Windows.UI.Xaml.Shapes.Ellipse();
+            ellipse.Height = Math.Abs(y2 - y1);
+            ellipse.Width = Math.Abs(x2 - x1);
+            ellipse.Margin = new Windows.UI.Xaml.Thickness(
+                x1 < x2 ? x1 : x2,
+                y1 < y2 ? y1 : y2,
+                x2 > x1 ? x2 : x1,
+                y2 > y1 ? y2 : y1
+                );
+            ellipse.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Left;
+            ellipse.Fill = new SolidColorBrush(Colors.Red);
+            ellipse.Stroke = new SolidColorBrush(Colors.Black);
+            _canvas.Children.Add(ellipse);
         }
     }
 }
