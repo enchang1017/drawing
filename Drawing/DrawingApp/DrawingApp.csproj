@@ -98,6 +98,9 @@
     <Compile Include="..\DrawingModel\Interface\IGraphics.cs">
       <Link>Interface\IGraphics.cs</Link>
     </Compile>
+    <Compile Include="..\DrawingModel\Interface\IState.cs">
+      <Link>Interface\IState.cs</Link>
+    </Compile>
     <Compile Include="..\DrawingModel\Interface\Shape.cs">
       <Link>Interface\Shape.cs</Link>
     </Compile>
@@ -113,6 +116,9 @@
     <Compile Include="..\DrawingModel\Model\DrawCommand.cs">
       <Link>Model\DrawCommand.cs</Link>
     </Compile>
+    <Compile Include="..\DrawingModel\Model\DrawingState.cs">
+      <Link>Model\DrawingState.cs</Link>
+    </Compile>
     <Compile Include="..\DrawingModel\Model\Ellipse.cs">
       <Link>Model\Ellipse.cs</Link>
     </Compile>
@@ -124,6 +130,12 @@
     </Compile>
     <Compile Include="..\DrawingModel\Model\ModelProperty.cs">
       <Link>Model\ModelProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\DrawingModel\Model\PointerState.cs">
+      <Link>Model\PointerState.cs</Link>
+    </Compile>
+    <Compile Include="..\DrawingModel\Model\ShapeFactory.cs">
+      <Link>Model\ShapeFactory.cs</Link>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

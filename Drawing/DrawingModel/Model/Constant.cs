@@ -18,5 +18,7 @@ namespace DrawingModel.Model
         public const double DIVISOR = 2.0;
         public const string CLEAR = "Clear";
         public const int MARGIN_NUMBER = 25;
+        public const string POINTERSTATE = "PointerState";
+        public const string DRAWINGSTATE = "DrawingState";
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DrawingModel.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -53,6 +54,18 @@ namespace DrawingModel.Model
             get
             {
                 return _commandManager.IsUndoEnabled;
+            }
+        }
+
+        public IState State
+        {
+            get
+            {
+                return _state;
+            }
+            set
+            {
+                _state = value;
             }
         }
     }

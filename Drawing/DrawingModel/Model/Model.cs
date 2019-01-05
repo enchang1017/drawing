@@ -20,6 +20,12 @@ namespace DrawingModel.Model
         private Points _point = new Points();
         private string _status;
         private ShapeFactory _shapeFactory = new ShapeFactory();
+        private IState _state;
+
+        public Model()
+        {
+            this.State = new PointerState();
+        }
 
         //滑鼠點下
         public void PressPointer(double x1, double y1)
@@ -92,6 +98,7 @@ namespace DrawingModel.Model
             shape.x2 = x2;
             shape.y2 = y2;
             _commandManager.Execute(new DrawCommand(this, shape));
+            ChangeState(nameof(PointerState));
         }
 
         //設定Hint 第一個點
@@ -111,6 +118,19 @@ namespace DrawingModel.Model
             {
                 _hintEllipses.x1 = x1;
                 _hintEllipses.y1 = y1;
+            }
+        }
+
+        //改變狀態
+        public void ChangeState(string StateName)
+        {
+            if (StateName == nameof(PointerState))
+            {
+                this.State = new PointerState();
+            }
+            else if (StateName == nameof(DrawingState))
+            {
+                this.State = new DrawingState();
             }
         }
 

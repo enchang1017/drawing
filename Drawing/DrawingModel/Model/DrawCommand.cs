@@ -17,11 +17,13 @@ namespace DrawingModel.Model
             _shape = shape;
         }
 
+        //執行儲存Shape List
         public void Execute()
         {
             _model.DrawShape(_shape);
         }
 
+        //刪除Shape
         public void UnExecute()
         {
             _model.DeleteShape();

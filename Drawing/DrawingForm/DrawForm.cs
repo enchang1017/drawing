@@ -57,25 +57,35 @@ namespace DrawingForm
         //滑鼠左鍵按下
         public void PressHandleCanvas(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            _model.PressPointer(e.X, e.Y);
+            if (_model.State.StateName == Constant.DRAWINGSTATE)
+            {
+                _model.PressPointer(e.X, e.Y);
+            }
         }
 
         //滑鼠左鍵釋放
         public void ReleaseHandleCanvas(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            _model.ReleasePointer(e.X, e.Y);
+            if (_model.State.StateName == Constant.DRAWINGSTATE)
+            {
+                _model.ReleasePointer(e.X, e.Y);
+                SetButtonUp();
+            }
         }
 
         //滑鼠移動
         public void MoveHandleCanvas(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            _model.MovePointer(e.X, e.Y);
+            if (_model.State.StateName == Constant.DRAWINGSTATE)
+            {
+                _model.MovePointer(e.X, e.Y);
+            }
         }
 
         //畫圖
         public void PaintHandleCanvas(object sender, System.Windows.Forms.PaintEventArgs e)
         {
-            _presentationModel.Draw(e.Graphics);
+             _presentationModel.Draw(e.Graphics);
         }
 
         //按下畫線按鈕
@@ -83,6 +93,7 @@ namespace DrawingForm
         {
             _model.Status = Constant.LINE;
             _presentationModel.SetStatus(Constant.LINE);
+            _model.ChangeState(Constant.DRAWINGSTATE);
         }
 
         //按下畫方塊按鈕
@@ -90,6 +101,7 @@ namespace DrawingForm
         {
             _model.Status = Constant.DIAMOND;
             _presentationModel.SetStatus(Constant.DIAMOND);
+            _model.ChangeState(Constant.DRAWINGSTATE);
         }
         
         //按下Undo
@@ -119,6 +131,15 @@ namespace DrawingForm
         {
             _model.Status = Constant.ELLIPSE;
             _presentationModel.SetStatus(Constant.ELLIPSE);
+            _model.ChangeState(Constant.DRAWINGSTATE);
+        }
+
+        //將按鈕設置為true
+        private void SetButtonUp()
+        {
+            _diamondButton.Enabled = true;
+            _ellipsebutton.Enabled = true;
+            _lineButton.Enabled = true;
         }
     }
 }

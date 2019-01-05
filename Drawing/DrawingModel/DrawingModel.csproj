@@ -43,15 +43,18 @@
   <ItemGroup>
     <Compile Include="Interface\ICommand.cs" />
     <Compile Include="Interface\IGraphics.cs" />
+    <Compile Include="Interface\IState.cs" />
     <Compile Include="Interface\Shape.cs" />
     <Compile Include="Model\CommandManager.cs" />
     <Compile Include="Model\Constant.cs" />
     <Compile Include="Model\Diamond.cs" />
     <Compile Include="Model\DrawCommand.cs" />
+    <Compile Include="Model\DrawingState.cs" />
     <Compile Include="Model\Ellipse.cs" />
     <Compile Include="Model\Line.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\ModelProperty.cs" />
+    <Compile Include="Model\PointerState.cs" />
     <Compile Include="Model\Points.cs" />
     <Compile Include="Model\ShapeFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
