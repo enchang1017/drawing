@@ -12,10 +12,11 @@ namespace DrawingModel.Model
         private Stack<ICommand> _undo = new Stack<ICommand>();
         private Stack<ICommand> _redo = new Stack<ICommand>();
 
-        public void Execute(ICommand cmd)
+        //執行
+        public void Execute(ICommand command)
         {
-            cmd.Execute();
-            _undo.Push(cmd);    // push command 進 _undo stack
+            command.Execute();
+            _undo.Push(command);    // push command 進 _undo stack
             _redo.Clear();      // 清除_redo stack
         }
 
@@ -31,9 +32,9 @@ namespace DrawingModel.Model
         {
             if (_undo.Count <= 0)
                 throw new Exception("Cannot Undo exception\n");
-            ICommand cmd = _undo.Pop();
-            _redo.Push(cmd);
-            cmd.UnExecute();
+            ICommand command = _undo.Pop();
+            _redo.Push(command);
+            command.UnExecute();
         }
 
         //下一步
@@ -41,9 +42,9 @@ namespace DrawingModel.Model
         {
             if (_redo.Count <= 0)
                 throw new Exception("Cannot Redo exception\n");
-            ICommand cmd = _redo.Pop();
-            _undo.Push(cmd);
-            cmd.Execute();
+            ICommand command = _redo.Pop();
+            _undo.Push(command);
+            command.Execute();
         }
 
         public bool IsRedoEnabled

@@ -54,6 +54,7 @@
     <Compile Include="Model\Line.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\ModelProperty.cs" />
+    <Compile Include="Model\MoveCommand.cs" />
     <Compile Include="Model\PointerState.cs" />
     <Compile Include="Model\Points.cs" />
     <Compile Include="Model\ShapeFactory.cs" />

@@ -30,6 +30,18 @@ namespace DrawingModel.Model
             set;
         }
 
+        //判斷是否在圖形內
+        public bool DetectInRange(double pointX, double pointY)
+        {
+            double width = Math.Abs(this.x1 - this.x2);
+            double height = Math.Abs(this.y1 - this.y2);
+            double secondPointX = Math.Abs(pointX - (this.x1 + this.x2) / 2);
+            double secondPointY = Math.Abs(pointY - (this.y1 + this.y2) / 2);
+            bool result = (secondPointX * height + secondPointY * width) <= width * height;
+
+            return result;
+        }
+
         //畫圖
         public void Draw(IGraphics graphics)
         {

@@ -34,5 +34,8 @@ namespace DrawingModel.Interface
 
         //畫線
         void Draw(IGraphics graphics);
+
+        //偵測是否在裡面
+        bool DetectInRange(double pointX, double pointY);
     }
 }

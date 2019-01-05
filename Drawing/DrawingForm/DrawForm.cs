@@ -61,6 +61,10 @@ namespace DrawingForm
             {
                 _model.PressPointer(e.X, e.Y);
             }
+            else if (_model.State.StateName == Constant.POINTERSTATE)
+            {
+                _model.IsInRange(e.X, e.Y);
+            }
         }
 
         //滑鼠左鍵釋放
@@ -71,6 +75,10 @@ namespace DrawingForm
                 _model.ReleasePointer(e.X, e.Y);
                 SetButtonUp();
             }
+            else if (_model.State.StateName == Constant.POINTERSTATE)
+            {
+                _model.MoveShapeReleased(e.X, e.Y);
+            }
         }
 
         //滑鼠移動
@@ -79,6 +87,10 @@ namespace DrawingForm
             if (_model.State.StateName == Constant.DRAWINGSTATE)
             {
                 _model.MovePointer(e.X, e.Y);
+            }
+            else if (_model.State.StateName == Constant.POINTERSTATE)
+            {
+                _model.MoveShapeMoving(e.X, e.Y);
             }
         }
 

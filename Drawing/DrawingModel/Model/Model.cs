@@ -21,10 +21,67 @@ namespace DrawingModel.Model
         private string _status;
         private ShapeFactory _shapeFactory = new ShapeFactory();
         private IState _state;
+        private Shape _selectedShape;
+        private double _pressPointX;
+        private double _pressPointY;
 
         public Model()
         {
             this.State = new PointerState();
+        }
+
+        //移動圖片-點下
+        public void IsInRange(double pointX, double pointY)
+        {
+            for (int i = _shapes.Count - 1; i >= 0; i--)
+            {
+                if (_shapes[i].DetectInRange(pointX, pointY))
+                {
+                    _pressPointX = _point.LastPoint_X = pointX;
+                    _pressPointY = _point.LastPoint_Y = pointY;
+                    _selectedShape = _shapes[i];
+                    break;
+                }
+            }
+        }
+
+        //移動圖片-滑鼠移動
+        public void MoveShapeMoving(double pointX, double pointY)
+        {
+            if (_selectedShape != null)
+            {
+                _selectedShape.x1 -= (_point.LastPoint_X - pointX);
+                _selectedShape.x2 -= (_point.LastPoint_X - pointX);
+                _selectedShape.y1 -= (_point.LastPoint_Y - pointY);
+                _selectedShape.y2 -= (_point.LastPoint_Y - pointY);
+                _point.LastPoint_X = pointX;
+                _point.LastPoint_Y = pointY;
+                NotifyModelChanged();
+            }
+        }
+
+        //移動圖片-釋放
+        public void MoveShapeReleased(double pointX, double pointY)
+        {
+            if (_selectedShape != null)
+            {
+                _selectedShape.x1 += (_pressPointX - pointX);
+                _selectedShape.x2 += (_pressPointX - pointX);
+                _selectedShape.y1 += (_pressPointY - pointY);
+                _selectedShape.y2 += (_pressPointY - pointY);
+                _commandManager.Execute(new MoveCommand(this, _selectedShape, pointX, pointY, _pressPointX, _pressPointY));
+                _selectedShape = null;
+            }
+                
+        }
+
+        //將移動圖片重新給值
+        public void MoveShapePoint(Shape shape, double pointX, double pointY, double firstPointX, double firstPointY)
+        {
+            shape.x1 -= (firstPointX - pointX);
+            shape.x2 -= (firstPointX - pointX);
+            shape.y1 -= (firstPointY - pointY);
+            shape.y2 -= (firstPointY - pointY);
         }
 
         //滑鼠點下
@@ -118,19 +175,6 @@ namespace DrawingModel.Model
             {
                 _hintEllipses.x1 = x1;
                 _hintEllipses.y1 = y1;
-            }
-        }
-
-        //改變狀態
-        public void ChangeState(string StateName)
-        {
-            if (StateName == nameof(PointerState))
-            {
-                this.State = new PointerState();
-            }
-            else if (StateName == nameof(DrawingState))
-            {
-                this.State = new DrawingState();
             }
         }
 

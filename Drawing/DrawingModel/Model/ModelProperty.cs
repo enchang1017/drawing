@@ -9,6 +9,28 @@ namespace DrawingModel.Model
 {
     public partial class Model
     {
+        //將點回復
+        public void MinusPoint(Shape shape, double pointX, double pointY, double firstPointX, double firstPointY)
+        {
+            shape.x1 += (firstPointX - pointX);
+            shape.x2 += (firstPointX - pointX);
+            shape.y1 += (firstPointY - pointY);
+            shape.y2 += (firstPointY - pointY);
+        }
+
+        //改變狀態
+        public void ChangeState(string StateName)
+        {
+            if (StateName == nameof(PointerState))
+            {
+                this.State = new PointerState();
+            }
+            else if (StateName == nameof(DrawingState))
+            {
+                this.State = new DrawingState();
+            }
+        }
+
         //上一步
         public void Undo()
         {

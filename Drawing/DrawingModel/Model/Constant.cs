@@ -20,5 +20,6 @@ namespace DrawingModel.Model
         public const int MARGIN_NUMBER = 25;
         public const string POINTERSTATE = "PointerState";
         public const string DRAWINGSTATE = "DrawingState";
+        public const double MIN_DISTANCE = 1.0;
     }
 }
