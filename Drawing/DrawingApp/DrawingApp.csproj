@@ -131,6 +131,9 @@
     <Compile Include="..\DrawingModel\Model\ModelProperty.cs">
       <Link>Model\ModelProperty.cs</Link>
     </Compile>
+    <Compile Include="..\DrawingModel\Model\MoveCommand.cs">
+      <Link>Model\MoveCommand.cs</Link>
+    </Compile>
     <Compile Include="..\DrawingModel\Model\PointerState.cs">
       <Link>Model\PointerState.cs</Link>
     </Compile>

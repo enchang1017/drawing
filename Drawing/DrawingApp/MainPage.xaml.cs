@@ -58,6 +58,10 @@ namespace DrawingApp
         {
             if (_model.State.StateName == Constant.DRAWINGSTATE)
                 _model.PressPointer(e.GetCurrentPoint(_canvas).Position.X, e.GetCurrentPoint(_canvas).Position.Y);
+            else if (_model.State.StateName == Constant.POINTERSTATE)
+            {
+                _model.IsInRange(e.GetCurrentPoint(_canvas).Position.X, e.GetCurrentPoint(_canvas).Position.Y);
+            }
         }
 
         //滑鼠左鍵釋放
@@ -68,6 +72,10 @@ namespace DrawingApp
                 _model.ReleasePointer(e.GetCurrentPoint(_canvas).Position.X, e.GetCurrentPoint(_canvas).Position.Y);
                 SetButtonUp();
             }
+            else if (_model.State.StateName == Constant.POINTERSTATE)
+            {
+                _model.MoveShapeReleased(e.GetCurrentPoint(_canvas).Position.X, e.GetCurrentPoint(_canvas).Position.Y);
+            }
         }
 
         //滑鼠移動
@@ -75,6 +83,10 @@ namespace DrawingApp
         {
             if (_model.State.StateName == Constant.DRAWINGSTATE)
                 _model.MovePointer(e.GetCurrentPoint(_canvas).Position.X, e.GetCurrentPoint(_canvas).Position.Y);
+            else if (_model.State.StateName == Constant.POINTERSTATE)
+            {
+                _model.MoveShapeMoving(e.GetCurrentPoint(_canvas).Position.X, e.GetCurrentPoint(_canvas).Position.Y);
+            }
         }
 
         //按下Line Button
