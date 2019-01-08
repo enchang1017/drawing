@@ -9,11 +9,11 @@ namespace DrawingModel.Model
 {
     public class DrawingState : IState
     {
-        string IState.StateName
+        public string StateName
         {
             get
             {
-                return "DrawingState";
+                return Constant.DRAWING_STATE;
             }
         }
     }

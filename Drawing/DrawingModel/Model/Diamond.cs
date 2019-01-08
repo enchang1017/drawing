@@ -35,8 +35,8 @@ namespace DrawingModel.Model
         {
             double width = Math.Abs(this.x1 - this.x2);
             double height = Math.Abs(this.y1 - this.y2);
-            double secondPointX = Math.Abs(pointX - (this.x1 + this.x2) / 2);
-            double secondPointY = Math.Abs(pointY - (this.y1 + this.y2) / 2);
+            double secondPointX = Math.Abs(pointX - (this.x1 + this.x2) / Constant.DIVISOR_HALF);
+            double secondPointY = Math.Abs(pointY - (this.y1 + this.y2) / Constant.DIVISOR_HALF);
             bool result = (secondPointX * height + secondPointY * width) <= width * height;
 
             return result;

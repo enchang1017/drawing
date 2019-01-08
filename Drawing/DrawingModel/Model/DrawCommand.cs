@@ -24,7 +24,7 @@ namespace DrawingModel.Model
         }
 
         //刪除Shape
-        public void UnExecute()
+        public void DoNotExecute()
         {
             _model.DeleteShape();
         }

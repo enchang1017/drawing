@@ -10,7 +10,8 @@ namespace DrawingModel.Interface
     {
         //執行Redo
         void Execute();
+
         //執行Undo
-        void UnExecute();
+        void DoNotExecute();
     }
 }

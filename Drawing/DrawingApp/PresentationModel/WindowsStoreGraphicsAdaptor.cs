@@ -7,7 +7,7 @@ using DrawingModel.Model;
 using Windows.Foundation;
 using System;
 
-namespace DrawingApp.PresentationModel
+namespace DrawingApp
 {
     public class WindowsStoreGraphicsAdaptor : IGraphics
     {

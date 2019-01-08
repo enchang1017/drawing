@@ -8,7 +8,7 @@ using DrawingModel.Interface;
 using DrawingModel.Model;
 using System.ComponentModel;
 
-namespace DrawingApp.PresentationModel
+namespace DrawingApp
 {
     public class PresentationModel : INotifyPropertyChanged
     {

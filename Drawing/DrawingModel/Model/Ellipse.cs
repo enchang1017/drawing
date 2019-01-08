@@ -36,14 +36,14 @@ namespace DrawingModel.Model
             var width = this.x1 - this.x2;
             var height = this.y1 - this.y2;
             bool result = false;
-            double xRadius = width / 2;
-            double yRadius = height / 2;
+            double xRadius = width / Constant.DIVISOR_HALF;
+            double yRadius = height / Constant.DIVISOR_HALF;
             double centerX = this.x2 + xRadius;
             double centerY = this.y2 + yRadius;
-            double normalizedX = pointX - centerX;
-            double normalizedY = pointY - centerY;
-            double distance = ((double)(normalizedX * normalizedX) / (xRadius * xRadius)) +
-            ((double)(normalizedY * normalizedY) / (yRadius * yRadius));
+            double normalPointX = pointX - centerX;
+            double normalPointY = pointY - centerY;
+            double distance = ((double)(normalPointX * normalPointX) / (xRadius * xRadius)) +
+            ((double)(normalPointY * normalPointY) / (yRadius * yRadius));
             result = distance <= Constant.MIN_DISTANCE; //MIN_DISTANCE decides how is sensitive
 
             return result;

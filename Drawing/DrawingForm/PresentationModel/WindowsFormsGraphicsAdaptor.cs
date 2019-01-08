@@ -44,9 +44,9 @@ namespace DrawingForm
         public void DrawEllipses(double x1, double y1, double x2, double y2)
         {
             Pen blackPen = new Pen(Color.Black, 1);
-            Rectangle rect = new Rectangle((int)x1, (int)y1, (int)(x2 - x1), (int)(y2 - y1));
-            _graphics.FillEllipse(Brushes.Salmon, rect);
-            _graphics.DrawEllipse(blackPen, rect);
+            Rectangle rectangle = new Rectangle((int)x1, (int)y1, (int)(x2 - x1), (int)(y2 - y1));
+            _graphics.FillEllipse(Brushes.Salmon, rectangle);
+            _graphics.DrawEllipse(blackPen, rectangle);
         }
     }
 }

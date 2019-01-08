@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this._drawingPanel = new System.Windows.Forms.Panel();
-            this._ellipsebutton = new System.Windows.Forms.Button();
+            this._ellipseButton = new System.Windows.Forms.Button();
             this._clearButton = new System.Windows.Forms.Button();
             this._lineButton = new System.Windows.Forms.Button();
             this._diamondButton = new System.Windows.Forms.Button();
@@ -39,7 +39,7 @@
             // _drawingPanel
             // 
             this._drawingPanel.BackColor = System.Drawing.Color.LightYellow;
-            this._drawingPanel.Controls.Add(this._ellipsebutton);
+            this._drawingPanel.Controls.Add(this._ellipseButton);
             this._drawingPanel.Controls.Add(this._clearButton);
             this._drawingPanel.Controls.Add(this._lineButton);
             this._drawingPanel.Controls.Add(this._diamondButton);
@@ -49,15 +49,15 @@
             this._drawingPanel.Size = new System.Drawing.Size(1121, 601);
             this._drawingPanel.TabIndex = 0;
             // 
-            // _ellipsebutton
+            // _ellipseButton
             // 
-            this._ellipsebutton.Location = new System.Drawing.Point(583, 12);
-            this._ellipsebutton.Name = "_ellipsebutton";
-            this._ellipsebutton.Size = new System.Drawing.Size(226, 45);
-            this._ellipsebutton.TabIndex = 3;
-            this._ellipsebutton.Text = "Ellipse";
-            this._ellipsebutton.UseVisualStyleBackColor = true;
-            this._ellipsebutton.Click += new System.EventHandler(this.ClickEllipsesbutton);
+            this._ellipseButton.Location = new System.Drawing.Point(583, 12);
+            this._ellipseButton.Name = "_ellipseButton";
+            this._ellipseButton.Size = new System.Drawing.Size(226, 45);
+            this._ellipseButton.TabIndex = 3;
+            this._ellipseButton.Text = "Ellipse";
+            this._ellipseButton.UseVisualStyleBackColor = true;
+            this._ellipseButton.Click += new System.EventHandler(this.ClickEllipseButton);
             // 
             // _clearButton
             // 
@@ -107,7 +107,7 @@
         private System.Windows.Forms.Button _clearButton;
         private System.Windows.Forms.Button _lineButton;
         private System.Windows.Forms.Button _diamondButton;
-        private System.Windows.Forms.Button _ellipsebutton;
+        private System.Windows.Forms.Button _ellipseButton;
     }
 }
 

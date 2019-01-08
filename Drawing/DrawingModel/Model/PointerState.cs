@@ -9,11 +9,11 @@ namespace DrawingModel.Model
 {
     class PointerState : IState
     {
-        string IState.StateName
+        public string StateName
         {
             get
             {
-                return "PointerState";
+                return Constant.POINTER_STATE;
             }
         }
     }

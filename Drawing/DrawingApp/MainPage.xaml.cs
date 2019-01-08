@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using DrawingModel.Model;
-using DrawingApp.PresentationModel;
+using DrawingApp;
 
 // 空白頁項目範本已記錄在 https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x404
 
@@ -25,12 +25,12 @@ namespace DrawingApp
     public sealed partial class MainPage : Page
     {
         private Model _model;
-        private PresentationModel.PresentationModel _presentationModel;
+        private PresentationModel _presentationModel;
         public MainPage()
         {
             this.InitializeComponent();
             _model = new Model();
-            _presentationModel = new PresentationModel.PresentationModel(_model, _canvas);
+            _presentationModel = new PresentationModel(_model, _canvas);
 
             _canvas.PointerPressed += PressHandleCanvas;
             _canvas.PointerReleased += ReleaseHandleCanvas;
@@ -56,37 +56,21 @@ namespace DrawingApp
         //滑鼠左鍵按下
         public void PressHandleCanvas(object sender, PointerRoutedEventArgs e)
         {
-            if (_model.State.StateName == Constant.DRAWINGSTATE)
-                _model.PressPointer(e.GetCurrentPoint(_canvas).Position.X, e.GetCurrentPoint(_canvas).Position.Y);
-            else if (_model.State.StateName == Constant.POINTERSTATE)
-            {
-                _model.IsInRange(e.GetCurrentPoint(_canvas).Position.X, e.GetCurrentPoint(_canvas).Position.Y);
-            }
+            _model.GetPressPointerByStatue(e.GetCurrentPoint(_canvas).Position.X, e.GetCurrentPoint(_canvas).Position.Y);
         }
 
         //滑鼠左鍵釋放
         public void ReleaseHandleCanvas(object sender, PointerRoutedEventArgs e)
         {
-            if (_model.State.StateName == Constant.DRAWINGSTATE)
-            {
-                _model.ReleasePointer(e.GetCurrentPoint(_canvas).Position.X, e.GetCurrentPoint(_canvas).Position.Y);
+            var state = _model.GetReleasePointerByStatus(e.GetCurrentPoint(_canvas).Position.X, e.GetCurrentPoint(_canvas).Position.Y);
+            if (state == Constant.DRAWING_STATE)
                 SetButtonUp();
-            }
-            else if (_model.State.StateName == Constant.POINTERSTATE)
-            {
-                _model.MoveShapeReleased(e.GetCurrentPoint(_canvas).Position.X, e.GetCurrentPoint(_canvas).Position.Y);
-            }
         }
 
         //滑鼠移動
         public void MoveHandleCanvas(object sender, PointerRoutedEventArgs e)
         {
-            if (_model.State.StateName == Constant.DRAWINGSTATE)
-                _model.MovePointer(e.GetCurrentPoint(_canvas).Position.X, e.GetCurrentPoint(_canvas).Position.Y);
-            else if (_model.State.StateName == Constant.POINTERSTATE)
-            {
-                _model.MoveShapeMoving(e.GetCurrentPoint(_canvas).Position.X, e.GetCurrentPoint(_canvas).Position.Y);
-            }
+            _model.GetMovePointerByStatus(e.GetCurrentPoint(_canvas).Position.X, e.GetCurrentPoint(_canvas).Position.Y);
         }
 
         //按下Line Button
@@ -94,7 +78,7 @@ namespace DrawingApp
         {
             _model.Status = Constant.LINE;
             _presentationModel.SetStatus(Constant.LINE);
-            _model.ChangeState(Constant.DRAWINGSTATE);
+            _model.ChangeState(Constant.DRAWING_STATE);
         }
 
         //按下Diamond按鈕
@@ -102,7 +86,7 @@ namespace DrawingApp
         {
             _model.Status = Constant.DIAMOND;
             _presentationModel.SetStatus(Constant.DIAMOND);
-            _model.ChangeState(Constant.DRAWINGSTATE);
+            _model.ChangeState(Constant.DRAWING_STATE);
         }
 
         //按下Ellipse按鈕
@@ -110,7 +94,7 @@ namespace DrawingApp
         {
             _model.Status = Constant.ELLIPSE;
             _presentationModel.SetStatus(Constant.ELLIPSE);
-            _model.ChangeState(Constant.DRAWINGSTATE);
+            _model.ChangeState(Constant.DRAWING_STATE);
         }
 
         //按下Undo

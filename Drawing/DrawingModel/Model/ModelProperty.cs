@@ -9,8 +9,49 @@ namespace DrawingModel.Model
 {
     public partial class Model
     {
+        //判斷Reslease取得Move事件
+        public string GetReleasePointerByStatus(double pointX, double pointY)
+        {
+            if (this.State.StateName == Constant.DRAWING_STATE)
+            {
+                this.ReleasePointer(pointX, pointY);
+                return Constant.DRAWING_STATE;
+            }
+            else
+            {
+                this.MoveShapeReleased(pointX, pointY);
+                return Constant.POINTER_STATE;
+            }
+        }
+
+        //判斷Status取得Move事件
+        public void GetMovePointerByStatus(double pointX, double pointY)
+        {
+            if (this.State.StateName == Constant.DRAWING_STATE)
+            {
+                this.MovePointer(pointX, pointY);
+            }
+            else
+            {
+                this.MoveShapeMoving(pointX, pointY);
+            }
+        }
+
+        //判斷Status取得Press事件
+        public void GetPressPointerByStatue(double pointX, double pointY)
+        {
+            if (this.State.StateName == Constant.DRAWING_STATE)
+            {
+                this.PressPointer(pointX, pointY);
+            }
+            else
+            {
+                this.IsInRange(pointX, pointY);
+            }
+        }
+
         //將點回復
-        public void MinusPoint(Shape shape, double pointX, double pointY, double firstPointX, double firstPointY)
+        public void SubtractPoint(Shape shape, double pointX, double pointY, double firstPointX, double firstPointY)
         {
             shape.x1 += (firstPointX - pointX);
             shape.x2 += (firstPointX - pointX);
@@ -19,13 +60,13 @@ namespace DrawingModel.Model
         }
 
         //改變狀態
-        public void ChangeState(string StateName)
+        public void ChangeState(string stateName)
         {
-            if (StateName == nameof(PointerState))
+            if (stateName == Constant.POINTER_STATE)
             {
                 this.State = new PointerState();
             }
-            else if (StateName == nameof(DrawingState))
+            else if (stateName == Constant.DRAWING_STATE)
             {
                 this.State = new DrawingState();
             }

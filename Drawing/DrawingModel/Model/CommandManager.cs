@@ -16,8 +16,8 @@ namespace DrawingModel.Model
         public void Execute(ICommand command)
         {
             command.Execute();
-            _undo.Push(command);    // push command 進 _undo stack
-            _redo.Clear();      // 清除_redo stack
+            _undo.Push(command);// push command 進 _undo stack
+            _redo.Clear();// 清除_redo stack
         }
 
         //清除
@@ -31,17 +31,17 @@ namespace DrawingModel.Model
         public void Undo()
         {
             if (_undo.Count <= 0)
-                throw new Exception("Cannot Undo exception\n");
+                throw new Exception(Constant.UNDO_EXCEPTION);
             ICommand command = _undo.Pop();
             _redo.Push(command);
-            command.UnExecute();
+            command.DoNotExecute();
         }
 
         //下一步
         public void Redo()
         {
             if (_redo.Count <= 0)
-                throw new Exception("Cannot Redo exception\n");
+                throw new Exception(Constant.REDO_EXCEPTION);
             ICommand command = _redo.Pop();
             _undo.Push(command);
             command.Execute();

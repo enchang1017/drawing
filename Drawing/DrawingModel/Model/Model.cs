@@ -155,7 +155,7 @@ namespace DrawingModel.Model
             shape.x2 = x2;
             shape.y2 = y2;
             _commandManager.Execute(new DrawCommand(this, shape));
-            ChangeState(nameof(PointerState));
+            ChangeState(Constant.POINTER_STATE);
         }
 
         //設定Hint 第一個點

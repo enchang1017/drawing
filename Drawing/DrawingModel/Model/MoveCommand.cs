@@ -33,9 +33,9 @@ namespace DrawingModel.Model
         }
 
         //取消
-        public void UnExecute()
+        public void DoNotExecute()
         {
-            _model.MinusPoint(_shape, _pointX, _pointY, _firstPressX, _firstPressY);
+            _model.SubtractPoint(_shape, _pointX, _pointY, _firstPressX, _firstPressY);
         }
     }
 }

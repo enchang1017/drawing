@@ -16,10 +16,13 @@ namespace DrawingModel.Model
         public const string DIAMOND = "Diamond";
         public const string ELLIPSE = "Ellipse";
         public const double DIVISOR = 2.0;
+        public const int DIVISOR_HALF = 2;
         public const string CLEAR = "Clear";
         public const int MARGIN_NUMBER = 25;
-        public const string POINTERSTATE = "PointerState";
-        public const string DRAWINGSTATE = "DrawingState";
+        public const string POINTER_STATE = "PointerState";
+        public const string DRAWING_STATE = "DrawingState";
         public const double MIN_DISTANCE = 1.0;
+        public const string UNDO_EXCEPTION = "Cannot Undo exception\n";
+        public const string REDO_EXCEPTION = "Cannot Redo exception\n";
     }
 }
